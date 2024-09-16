@@ -1,0 +1,93 @@
+a)
+Input: 
+ping 192.168.3.133
+--- --- --- --- ---
+Output)
+Pinging 192.168.3.133 with 32 bytes of data:
+Reply from 192.168.3.133: bytes=32 time=203ms TTL=64
+Reply from 192.168.3.133: bytes=32 time=139ms TTL=64
+Request timed out.
+Reply from 192.168.3.133: bytes=32 time=101ms TTL=64
+
+Ping statistics for 192.168.3.133:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 101ms, Maximum = 203ms, Average = 147ms
+--- --- --- --- ---
+
+b)
+Input:
+ping www.ox.ac.uk
+--- --- --- --- ---
+Output:
+Pinging www.ox.ac.uk.cdn.cloudflare.net [172.67.20.89] with 32 bytes of data:
+Reply from 172.67.20.89: bytes=32 time=133ms TTL=53
+Reply from 172.67.20.89: bytes=32 time=145ms TTL=53
+Reply from 172.67.20.89: bytes=32 time=77ms TTL=53
+Reply from 172.67.20.89: bytes=32 time=105ms TTL=53
+
+Ping statistics for 172.67.20.89:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 77ms, Maximum = 145ms, Average = 115ms
+--- --- --- --- ----
+d)
+Input:
+tracert www.ox.ac.uk
+--- --- --- --- ---
+Output:
+Tracing route to www.ox.ac.uk.cdn.cloudflare.net [172.67.20.89]
+over a maximum of 30 hops:
+
+  1     6 ms    16 ms     2 ms  ARCHER_VR400 [192.168.0.1]
+  2     4 ms     2 ms     3 ms  mada-alarab.ps [192.168.1.254]
+  3     8 ms     7 ms     6 ms  ADSL-185.17.235.202.mada.ps [185.17.235.202]
+  4     9 ms     6 ms     7 ms  172.16.250.77
+  5    28 ms     7 ms     6 ms  10.160.160.253
+  6    49 ms    48 ms    50 ms  bzq-84-108-133-105.static-ip.bezeqint.net [84.108.133.105]
+  7     *        *        *     Request timed out.
+  8    50 ms    66 ms    60 ms  bzq-219-33-146.isdn.bezeqint.net [62.219.33.146]
+  9    50 ms    47 ms    48 ms  172.67.20.89
+
+Trace complete.
+--- --- --- --- ---
+e)
+Input:
+nslookup www.ox.ac.uk
+--- --- --- --- ---
+Output:
+Server:  UnKnown
+Address:  192.168.0.1
+
+Non-authoritative answer:
+Name:    www.ox.ac.uk.cdn.cloudflare.net
+Addresses:  172.67.20.89
+          104.22.49.74
+          104.22.48.74
+Aliases:  www.ox.ac.uk
+--- --- --- --- ---
+f)
+Input:
+telnet www.ox.ak.uk
+--- --- --- --- ---
+
+Output:
+HTTP/1.1 400 Bad Request
+Server: cloudflare
+Date: Thu, 15 Aug 2024 20:58:33 GMT
+Content-Type: text/html
+Content-Length: 155
+Connection: close
+CF-RAY: -
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>cloudflare</center>
+</body>
+</html>
+
+
+Connection to host lost.
+--- --- --- --- ---
